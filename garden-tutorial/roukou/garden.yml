@@ -1,0 +1,21 @@
+module:
+  description: Spring Boot to demonstrate garden deployment.
+  type: container
+  name: roukou
+  hotReload:
+    sync:
+      - target: /app/target
+        source: target
+  services:
+    - name: roukou
+      ports:
+        - name: http
+          containerPort: 8080
+          servicePort: 80
+      healthCheck:
+        httpGet:
+          path: /actuator/health
+          port: http
+      ingresses:
+        - path: /garden/api/v1.0/
+          port: http

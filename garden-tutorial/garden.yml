@@ -1,0 +1,7 @@
+project:
+  name: garden-tutorial
+  environments:
+    - name: local
+      providers:
+        - name: local-kubernetes
+          context: minikube
